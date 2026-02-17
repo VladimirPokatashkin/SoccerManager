@@ -1,7 +1,8 @@
-import model.repoImpls.TeamRepository;
-import model.repoImpls.TournamentRepository;
-import model.repoInterfaces.ITeamRepository;
-import model.servicesImpls.JsonEntityLoader;
+import model.repository.impl.CountryRepository;
+import model.repository.impl.TeamRepository;
+import model.repository.impl.TournamentRepository;
+import model.repository.ITeamRepository;
+import model.service.loading.impl.JsonEntityLoader;
 import presenter.ILangService;
 import presenter.IPresenter;
 import presenter.impl.JsonLangService;
@@ -38,7 +39,7 @@ public class Main {
 
         ITeamRepository repository = new TeamRepository();
 
-        JsonEntityLoader loader = new JsonEntityLoader(Path.of(configsURL.toURI()), new HashMap<>(), repository, new TournamentRepository());
+        JsonEntityLoader loader = new JsonEntityLoader(Path.of(configsURL.toURI()), new CountryRepository(), repository, new TournamentRepository());
 
         loader.loadClubsAndLeagues(Path.of("teams"));
 
